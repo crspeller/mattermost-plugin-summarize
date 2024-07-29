@@ -30,6 +30,8 @@ func (p *Plugin) ServeHTTP(c *plugin.Context, w http.ResponseWriter, r *http.Req
 	router.GET("/ai_bots", p.handleGetAIBots)
 	router.POST("/telemetry/track", p.handleTrackEvent)
 
+	router.POST("/conversation", p.handlePostConversation)
+
 	botRequriedRouter := router.Group("")
 	botRequriedRouter.Use(p.aiBotRequired)
 
